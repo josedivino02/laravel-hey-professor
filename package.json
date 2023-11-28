@@ -18,6 +18,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "flowbite": "^2.2.0",
         "husky": "^8.0.3"
     }
 }
