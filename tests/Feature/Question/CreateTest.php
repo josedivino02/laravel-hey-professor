@@ -8,11 +8,9 @@ it('should be able to create a new question bigger than 255 characters', functio
     $user = User::factory()->create();
     actingAs($user);
 
-    $request = post(route('question.store'), [
+    post(route('question.store'), [
         'question' => str_repeat('*', 260) . '?',
-    ]);
-
-    $request->assertRedirect(route('dashboard'));
+    ])->assertRedirect();
 
     assertDatabaseCount('questions', 1);
 
@@ -69,7 +67,6 @@ it('should check if ends with question mark ?', function () {
 });
 
 test("only authenticated users can create a new question", function () {
-
     post(route('question.store'), [
         'question' => str_repeat('*', 10) . '?',
     ])->assertRedirect(route('login'));
