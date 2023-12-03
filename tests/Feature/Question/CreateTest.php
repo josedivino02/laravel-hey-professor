@@ -67,3 +67,10 @@ it('should check if ends with question mark ?', function () {
 
     assertDatabaseCount('questions', 0);
 });
+
+test("only authenticated users can create a new question", function () {
+
+    post(route('question.store'), [
+        'question' => str_repeat('*', 10) . '?',
+    ])->assertRedirect(route('login'));
+});
