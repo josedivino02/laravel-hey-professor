@@ -14,7 +14,7 @@
 
         <hr class="border-gray-700 border-dashed my-4">
 
-        <div class="dark:text-gray-400 uppercase font-bold mb-1 ">My questions</div>
+        <div class="dark:text-gray-400 uppercase font-bold mb-1 ">Drafts</div>
         <div class="dark:text-gray-400 space-y-4">
             <x-table>
                 <x-table.thead>
@@ -38,6 +38,10 @@
                                         Publicar
                                     </button>
                                 </x-form>
+
+                                <a href="{{ route('question.edit', $question) }}" class="hover:underline text-blue-500">
+                                    Editar
+                                </a>
                             </x-table.td>
                         </x-table.tr>
                     @endforeach
@@ -47,7 +51,7 @@
 
         <hr class="border-gray-700 border-dashed my-4">
 
-        <div class="dark:text-gray-400 uppercase font-bold mb-1 ">Drafts</div>
+        <div class="dark:text-gray-400 uppercase font-bold mb-1 ">My questions</div>
         <div class="dark:text-gray-400 space-y-4">
             <x-table>
                 <x-table.thead>
