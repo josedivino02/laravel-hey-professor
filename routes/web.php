@@ -1,17 +1,21 @@
 <?php
 
+use App\Http\Controllers\Auth\Github\{CallbackController, RedirectController};
 use App\Http\Controllers\{DashboardController, ProfileController, Question, QuestionController};
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     if (app()->isLocal()) {
-        auth()->loginUsingId(1);
+        // auth()->loginUsingId(1);
 
-        return to_route('dashboard');
+        // return to_route('dashboard');
     }
 
     return view('welcome');
 });
+
+Route::get('/github/login', RedirectController::class)->name('github.login');
+Route::get('/github/callback', CallbackController::class)->name('github.callback');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
